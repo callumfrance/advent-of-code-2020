@@ -10,11 +10,29 @@ class PasswordValidator:
 
     def calculate_valids(self):
         for x in self.inputs:
-            if self.calculate_valid(x):
+#            if self.calculate_valid_summer(x):
+#                self.valid_count += 1
+            if self.calculate_valid_positioner(x):
                 self.valid_count += 1
 
     @staticmethod
-    def calculate_valid(single: List) -> bool:
+    def calculate_valid_positioner(single: List) -> bool:
+        isValid = False
+        if single[0][1] > len(single[2]):
+            # the final index matcher is greater than entire 1- string
+            return isValid
+        else:
+            setCount = 0
+            if single[2][single[0][0] - 1] == single[1]:
+                setCount += 1
+            if single[2][single[0][1] - 1] == single[1]:
+                setCount += 1
+            if setCount == 1:
+                isValid = True
+        return isValid
+
+    @staticmethod
+    def calculate_valid_summer(single: List) -> bool:
         isValid = False
         if single[0][0] > len(single[2]):
             # the smallest possible match is greater than entire string
