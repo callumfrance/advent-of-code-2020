@@ -21,6 +21,6 @@ class PasswordValidator:
             return isValid
         else:
             matches = single[2].count(single[1])
-            if (matches > single[0][0]) and (matches < single[0][1]):
+            if (matches >= single[0][0]) and (matches <= single[0][1]):
                 isValid = True
         return isValid
