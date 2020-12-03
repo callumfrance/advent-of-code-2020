@@ -1,6 +1,11 @@
-module Main where
+import qualified Data.HashMap.Strict as M
+import System.IO  
+import Control.Monad
 
-import Lib
+main = do
+    let fileName = "./src/input.txt"
+    contents <- readFile fileName
+    putStrLn contents
 
-main :: IO ()
-main = someFunc
+f :: [String] -> [Int]
+f = map read
