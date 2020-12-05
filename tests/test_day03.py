@@ -8,6 +8,12 @@ from solutions.day03.sleddie import Sleddie
 
 INPUT_FILE = r"helpers\input_day03.txt"
 
+SLOPES = [ \
+        (1, 1),
+        (3, 1),
+        (2, 2),
+        ]
+
 TEST_DICT = { \
                 (0,0): False,
                 (0,1): True,
@@ -43,6 +49,7 @@ def day03_sleddie(day03_ih):
     yield Sleddie(day03_ih.build_inputs(),
             day03_ih.max_row,
             day03_ih.max_base_col,
+            SLOPES
             )
 
 class TestInputHandler:
@@ -66,19 +73,31 @@ class TestSleddie:
     def test_class_build(self, day03_sleddie):
         assert day03_sleddie.row_size == 2
         assert day03_sleddie.col_size == 5
-        assert day03_sleddie.tree_hits == 0
+        assert day03_sleddie.tree_hits == dict()
+        assert day03_sleddie.slopes == SLOPES
         assert day03_sleddie.map == TEST_DICT
 
     def test_next_position(self, day03_sleddie):
-        y = day03_sleddie.get_next_position((0, 0))
+        y = day03_sleddie.get_next_position(SLOPES[1], (0, 0))
         assert y == (1, 3)
 
-        y = day03_sleddie.get_next_position(y)
+        y = day03_sleddie.get_next_position(SLOPES[1], y)
         assert y == (2, 0)
 
-        y = day03_sleddie.get_next_position(y)
+        y = day03_sleddie.get_next_position(SLOPES[1], y)
         assert y == (-1, -1)
 
     def test_calc_tree_hits(self, day03_sleddie):
-        x = day03_sleddie.calc_tree_hits()
+        z = day03_sleddie.calc_tree_hits(SLOPES[0])
+        assert z == 2
+
+        x = day03_sleddie.calc_tree_hits(SLOPES[1])
         assert x == 1
+
+        y = day03_sleddie.calc_tree_hits(SLOPES[2])
+        assert y == 1
+
+    def calc_all_slope_tree_hits(self, day03_sleddie):
+        y = day03_sleddie.calc_all_slope_tree_hits()
+
+        assert y == 2
