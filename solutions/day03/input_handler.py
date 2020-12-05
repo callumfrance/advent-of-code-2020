@@ -12,9 +12,11 @@ class InputHandler:
         self.max_base_col = 0
         self.max_row = 0
         self.grid = dict()
-        self.build_inputs(file_path)
+        self.file_path = file_path
 
-    def build_inputs(self, file_path: str) -> List:
+    def build_inputs(self, file_path: str=None) -> Dict[Tuple[int, int], bool]:
+        if not file_path:
+            file_path = self.file_path
         x = self.retrieve_file_contents(file_path)
         x = self.parse_raw_input(x)
         return x
@@ -26,7 +28,8 @@ class InputHandler:
             file_contents = fp.read().splitlines()
         return file_contents
 
-    def parse_raw_input(self, in_file_contents: List[str]) -> Dict[Tuple[int, int], bool]: 
+    def parse_raw_input(self, in_file_contents: List[str]) \
+            -> Dict[Tuple[int, int], bool]:
         self.grid = dict()
         for i, rawline in enumerate(in_file_contents):
             for j, line_char in enumerate(rawline):

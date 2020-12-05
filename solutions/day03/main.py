@@ -8,6 +8,7 @@ from sleddie import Sleddie
 
 def main(argv: List):
     ih = InputHandler(argv[0])
+    ih.build_inputs()
     s = Sleddie(ih.grid, ih.max_row, ih.max_base_col)
     s.next_step()
     print(s.tree_hits)
