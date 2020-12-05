@@ -10,7 +10,7 @@ class Sleddie:
         self.map = in_map
         self.tree_hits = 0
 
-    def next_step(self):
+    def calc_tree_hits(self):
         current_position = (0, 0)
         
         while current_position != (-1, -1):
@@ -18,9 +18,11 @@ class Sleddie:
                 self.tree_hits += 1
 
             current_position = self.get_next_position(current_position)
+        
+        return self.tree_hits
 
     def get_next_position(self, pos: Tuple[int, int]) -> Tuple[int, int]:
-        y = (pos[1] + 3) % self.col_size
+        y = (pos[1] + 3) % (self.col_size + 1)
         if pos[0] + 1 <= self.row_size:
             x = pos[0] + 1
         else:

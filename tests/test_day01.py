@@ -10,7 +10,7 @@ TEST_NUMERALS = [333, 666, 999, 1021]
 TEST_NUMERALS_A = [999, 1021]
 TEST_NUMERALS_B = [333, 666, 1021]
 
-INPUT_FILE = r"helpers\inputB.txt"
+INPUT_FILE = r"helpers\input_day01.txt"
 
 @pytest.fixture
 def day01_ih():
@@ -47,5 +47,5 @@ class TestCoolBoy:
     def test_cool_boy_a(self, day01_coolboy):
         assert day01_coolboy.part_a() == (999 * 1021)
 
-    def test_cool_boy_b(self, day01_coolboy):
-        assert day01_coolboy.part_b() == (333 * 666 * 1021)
+#    def test_cool_boy_b(self, day01_coolboy):
+#        assert day01_coolboy.part_b() == (333 * 666 * 1021)
