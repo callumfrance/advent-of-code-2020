@@ -14,6 +14,7 @@ def main(argv: List):
     a = Aero(ih.seats)
     a.calc_seat_values()
     print(a.get_highest_seat_id())
+    print(a.get_missing_seat_id())
 
 
 if __name__ == '__main__':

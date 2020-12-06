@@ -74,3 +74,7 @@ class TestAero:
     def test_get_highest_seat_id(self, day05_aero):
         day05_aero.calc_seat_values()
         assert day05_aero.get_highest_seat_id() == 656
+
+    def test_get_missing_seat_id(self, day05_aero):
+        day05_aero.calc_seat_values()
+        assert day05_aero.get_missing_seat_id() == 106

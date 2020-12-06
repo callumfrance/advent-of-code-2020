@@ -11,6 +11,18 @@ class Aero:
     def get_highest_seat_id(self) -> int:
         return max(self.seat_values)
 
+    def get_missing_seat_id(self) -> int:
+        last_seat = None
+        for seat in sorted(self.seat_values.items()):
+            f = seat[0]
+            if not last_seat:
+                last_seat = f
+            elif f > last_seat + 1:
+                return last_seat + 1
+            else:
+                last_seat = f
+        return -1
+
     def calc_seat_values(self) -> Dict[int, Tuple[int, int, str]]:
         for seat in self.seats:
             x = self.calc_seat_value(seat)
