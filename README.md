@@ -17,5 +17,3 @@ py solutions/day<DAY_NUMBER>/main.py input.txt
 ```
 py -m pytest -v
 ```
-
-
